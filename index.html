@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דילים יומיים מאלי אקספרס</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f4f8;
+    color: #000;
+  }
+  .hero {
+    background: linear-gradient(to right, #3a8dff, #00b0ff);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 0 0 30px 30px;
+  }
+  .hero h1 { font-size: 2rem; margin-bottom: 10px; }
+  .hero p { font-size: 1.1rem; margin-bottom: 20px; }
+  .hero img { max-width: 90%; height: auto; border-radius: 10px; }
+  .cta-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    transition: 0.3s;
+  }
+  .cta-btn:hover { background-color: #0056b3; }
+
+  .buttons { text-align: center; margin: 30px 0; }
+  .buttons a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+  .whatsapp { background-color: #25D366; }
+  .telegram { background-color: #0088cc; }
+  .buttons a:hover { opacity: 0.8; }
+
+  footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Pop-up */
+  #popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    display: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  #popup:hover { transform: translateX(-50%) translateY(-5px); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🎉 דיל יומי בלעדי – אני מביא לכם את ההנחות הכי שוות!</h1>
+  <p>כל יום אני מסנן את הדילים הכי חמים מאלי אקספרס – רק מה שבאמת שווה.</p>
+  <img src="https://via.placeholder.com/400x200.png?text=Deal+Image" alt="מבצע יומי">
+  <a href="https://t.me/+MprKtLuYMthkMWU0" class="cta-btn">⏰ אל תפספסו – הצטרפו עכשיו!</a>
+</div>
+
+<div class="buttons">
+  <a href="https://chat.whatsapp.com/B73PuN3ihMQ9Kk9TKiX0b5?mode=ems_copy_t" class="whatsapp">📲 Join WhatsApp</a>
+  <a href="https://t.me/+MprKtLuYMthkMWU0" class="telegram">💬 Join Telegram</a>
+</div>
+
+<footer>
+  📩 יצירת קשר: yourmail@email.com | 📱 050-1234567<br>
+  🌐 עקבו אחרי ברשתות החברתיות<br>
+  © כל הזכויות שמורות 2025
+</footer>
+
+<div id="popup">💥 הצטרפו עכשיו לקבוצת הדילים שלנו – אל תפספסו! 💥</div>
+
+<script>
+  // Pop-up אחרי 5 שניות
+  setTimeout(function() {
+    document.getElementById('popup').style.display = 'block';
+  }, 5000);
+
+  // לחיצה סוגרת את ה-popup
+  document.getElementById('popup').addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
