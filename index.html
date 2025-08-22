@@ -6,6 +6,7 @@
   <title>דיל היום – Daily Deals</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* רקע עם אנימציית בועות */
     body {
       margin:0;
       font-family:Arial,sans-serif;
@@ -13,22 +14,28 @@
       background: linear-gradient(135deg,#0d47a1,#42a5f5);
       color:#fff;
       overflow-x:hidden;
+      position: relative;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: rise 10s infinite;
+    }
+    @keyframes rise {
+      0% {transform: translateY(100vh) scale(0);}
+      50% {opacity:0.8;}
+      100% {transform: translateY(-10vh) scale(1);}
     }
 
     header {
       padding:40px 20px;
       background: rgba(0,0,0,0.3);
+      z-index:2;
+      position:relative;
     }
-
-    header h1 {
-      font-size:2.5em;
-      margin-bottom:10px;
-    }
-
-    header p {
-      font-size:1.2em;
-      margin-bottom:20px;
-    }
+    header h1 {font-size:2.5em;margin-bottom:10px;}
+    header p {font-size:1.2em;margin-bottom:20px;}
 
     .benefits {
       text-align:right;
@@ -38,21 +45,10 @@
       border-radius:10px;
       margin-bottom:30px;
     }
+    .benefits li {margin:10px 0;list-style:none;}
+    .benefits i {color:#ffcc00;margin-left:8px;}
 
-    .benefits li {
-      margin:10px 0;
-      list-style:none;
-    }
-
-    .benefits i {
-      color:#ffcc00;
-      margin-left:8px;
-    }
-
-    .cta-buttons {
-      margin:20px 0;
-    }
-
+    .cta-buttons {margin:20px 0;}
     .cta-buttons a {
       display:inline-block;
       margin:10px;
@@ -66,44 +62,27 @@
       position:relative;
       overflow:hidden;
     }
-
-    .cta-buttons a i {
-      margin-left:8px;
-    }
-
-    .cta-buttons a:hover {
-      background:#0d47a1;
-      transform:scale(1.05);
-    }
+    .cta-buttons a i {margin-left:8px;}
+    .cta-buttons a:hover {background:#0d47a1; transform:scale(1.05);}
 
     /* DEALS */
     .deals-gallery {
-      max-width:1000px;
+      max-width:800px;
       margin:50px auto;
-      padding:0 20px;
-      position:relative;
     }
-
     .deal-item {
-      width:200px;
-      margin:0 auto;
       background: rgba(0,0,0,0.2);
+      padding: 15px;
       border-radius:15px;
-      padding:15px;
-      text-align:center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      display:inline-block;
     }
-
     .deal-item img {
       width:200px;
-      border-radius:12px;
+      border-radius:10px;
       margin-bottom:10px;
     }
 
-    .deal-item p {
-      font-size:1em;
-    }
-
+    /* באנר */
     .banner {
       display:none;
       position:fixed;
@@ -116,31 +95,45 @@
       font-size:1.1em;
       box-shadow:0 4px 10px rgba(0,0,0,0.3);
       animation:slideUp 0.8s ease forwards;
+      z-index:3;
     }
+    .banner i {margin-left:8px;color:#ffcc00;}
+    @keyframes slideUp {from {transform:translateY(100px);opacity:0;} to {transform:translateY(0);opacity:1;}}
 
-    .banner i {
-      margin-left:8px;
-      color:#ffcc00;
-    }
-
-    @keyframes slideUp {
-      from {transform:translateY(100px); opacity:0;}
-      to {transform:translateY(0); opacity:1;}
+    footer {
+      background:rgba(0,0,0,0.3);
+      padding:20px;
+      margin-top:40px;
+      font-size:0.9em;
     }
 
   </style>
 </head>
 <body>
 
+<!-- אנימציית בועות -->
+<script>
+  const colors = ['#42a5f5','#1e88e5','#90caf9','#1565c0'];
+  for(let i=0;i<30;i++){
+    let bubble = document.createElement('div');
+    bubble.className='bubble';
+    bubble.style.width = bubble.style.height = Math.random()*50 + 20 + 'px';
+    bubble.style.left = Math.random()*100 + 'vw';
+    bubble.style.background = colors[Math.floor(Math.random()*colors.length)];
+    bubble.style.animationDuration = (5+Math.random()*5)+'s';
+    document.body.appendChild(bubble);
+  }
+</script>
+
 <header>
-  <h1>🎁 כל יום דיל חדש בלעדי – הצטרפו עכשיו!</h1>
-  <p>אני סורק את אלי אקספרס, בוחר את המוצרים הכי משתלמים – הצטרפו ותחסכו זמן וכסף!</p>
+  <h1>🎁 דיל יומי בלעדי – הצטרף עכשיו!</h1>
+  <p>קבל מבצעים מאלי אקספרס ישירות אליך – כל דיל נבחר בקפידה!</p>
 
   <ul class="benefits">
     <li><i class="fa-solid fa-sack-dollar"></i> חיסכון אמיתי – קופונים והנחות יומיות</li>
-    <li><i class="fa-solid fa-box-open"></i> מבחר ענק – אופנה, טכנולוגיה, ספורט ועוד</li>
+    <li><i class="fa-solid fa-box-open"></i> מבחר ענק – אופנה, טכנולוגיה, ספורט, בית ועוד</li>
     <li><i class="fa-solid fa-star"></i> מקצועיות – כל מוצר נבדק בקפידה</li>
-    <li><i class="fa-solid fa-hand-holding-heart"></i> נוחות – אתם מצטרפים, אני דואג לכל השאר</li>
+    <li><i class="fa-solid fa-hand-holding-heart"></i> נוחות – אתם רק מצטרפים, אני דואג לשאר</li>
   </ul>
 
   <div class="cta-buttons">
@@ -151,11 +144,11 @@
 
 <!-- DEALS -->
 <section class="deals-gallery">
-  <div class="deal-item" id="deal">
+  <div class="deal-item">
     <a href="https://s.click.aliexpress.com/e/_omjt1ST" target="_blank">
-      <img src="images/1.jpg" alt="דיל 1">
+      <img id="deal-image" src="images/1.jpg" alt="דיל יומי">
     </a>
-    <p id="deal-text">דיל יומי איכותי – נבחר במיוחד בשבילכם.</p>
+    <p id="deal-text">דיל איכותי – נבחר במיוחד בשבילכם!</p>
   </div>
 </section>
 
@@ -163,33 +156,34 @@
 
 <footer>
   📞 052-6592191 | ✉️ n.kopo24@gmail.com <br>
-  🔒 הצטרפות חינמית | ⭐ מאות לקוחות מרוצים <br>
+  🔒 הצטרפות חינמית וללא התחייבות | ⭐ מאות לקוחות מרוצים <br>
   © 2025 כל הזכויות שמורות
 </footer>
 
 <script>
   // באנר קופץ אחרי 5 שניות
-  setTimeout(() => { document.getElementById('banner').style.display = 'block'; }, 5000);
+  setTimeout(() => { document.getElementById('banner').style.display='block'; },5000);
 
-  // דילים מתחלפים אוטומטית
+  // דילים אוטומטיים
   const deals = [
-    {img:"images/1.jpg", text:"דיל יומי איכותי – נבחר במיוחד בשבילכם."},
+    {img:"images/1.jpg", text:"דיל איכותי – נבחר במיוחד בשבילכם!"},
     {img:"images/2.jpg", text:"מוצר איכותי מבית אלי אקספרס – כל יום משהו חדש!"},
     {img:"images/3.jpg", text:"בחירה קפדנית של המוצרים הכי משתלמים."},
     {img:"images/4.jpg", text:"כל יום דיל חדש – אל תחמיצו!"},
-    {img:"images/5.jpg", text:"דיל מיוחד רק בשבילכם – נצלו את ההזדמנות!"},
-    {img:"images/6.jpg", text:"המוצרים הכי משתלמים מאלי אקספרס, כל יום מחדש!"}
+    {img:"images/5.jpg", text:"מבצעים בלעדיים – הצטרף עכשיו!"},
+    {img:"images/6.jpg", text:"מוצרים מובחרים – רק בשבילכם!"}
   ];
 
   let current = 0;
-  const dealImg = document.querySelector("#deal img");
-  const dealText = document.getElementById("deal-text");
+  const imageEl = document.getElementById("deal-image");
+  const textEl = document.getElementById("deal-text");
 
-  setInterval(() => {
-    current = (current + 1) % deals.length;
-    dealImg.src = deals[current].img;
-    dealText.textContent = deals[current].text;
-  }, 4000); // מחליף כל 4 שניות
+  function nextDeal(){
+    current = (current+1)%deals.length;
+    imageEl.src = deals[current].img;
+    textEl.textContent = deals[current].text;
+  }
+  setInterval(nextDeal,3000);
 </script>
 
 </body>
